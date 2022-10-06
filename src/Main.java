@@ -5,10 +5,20 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choisissez un exercice : \n\n1. Discriminant\n2. Parite d'un nombre\n3. Calcul d'extremum\n"
-                + "4. Egalite entre chaines de caracteres\n5. Factorielle\n6. Compte a rebours\n7. Valeurs carres\n8. "
-                + "Table de multiplication\n9. Division d'entiers\n10. Regle gradue\n11. Nombres permiers\n12. "
-                + "Manipulations d'un tableau\n13. Inversion de tableau\n");
+        System.out.print("Exercices : \n\n" +
+                " 1. Discriminant\n" +
+                " 2. Parite d'un nombre\n" +
+                " 3. Calcul d'extremum\n" +
+                " 4. Egalite entre chaines de caracteres\n" +
+                " 5. Factorielle\n" +
+                " 6. Compte a rebours\n" +
+                " 7. Valeurs carres\n" +
+                " 8. Table de multiplication\n" +
+                " 9. Division d'entiers\n" +
+                "10. Regle gradue\n" +
+                "11. Nombres permiers\n" +
+                "12. Manipulations d'un tableau\n\n" +
+                "Votre choix : ");
 
         int i = scanner.nextInt();
 
@@ -24,6 +34,7 @@ public class Main {
 
             case 3 :
                 max();
+                min();
                 break;
 
             case 4 :
@@ -59,10 +70,6 @@ public class Main {
                 break;
 
             case 12 :
-                initialisationTableau();
-                break;
-
-            case 13 :
                 initialisationTableau();
                 break;
         }
@@ -119,26 +126,26 @@ public class Main {
         System.out.print("Entrez un second entier : ");
         int b = scanner.nextInt();
 
-        if (a>b) {
-            System.out.println("Le maximum est "+a);
-        }
-        else if(a<b) {
-            System.out.println("Le maximum est "+b);
-        }
-
-        else {
+        if (a > b) {
+            System.out.println("Le maximum est " + a);
+        } else if (a < b) {
+            System.out.println("Le maximum est " + b);
+        } else {
             System.out.println("Ils sont égaux !");
         }
+    }
 
+    public static void min () {
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Entrez un premier entier : ");
         int c = scanner.nextInt();
         System.out.print("Entrez un second entier : ");
         int d = scanner.nextInt();
         if (c>d) {
-            System.out.println("Le min est "+d);
+            System.out.println("Le minimum est "+d);
         }
         else if(c<d) {
-            System.out.println("Le min "+c);
+            System.out.println("Le minimum "+c);
         }
 
         else {
@@ -150,9 +157,10 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Entrez deux chaines de caracteres : ");
-
+        System.out.println("Entrez deux chaines de caracteres :");
+        System.out.print("Chaine 1 = ");
         String Chaine1 = scanner.nextLine();
+        System.out.print("Chaine 2 = ");
         String Chaine2 = scanner.nextLine();
 
         boolean test1 = Chaine1.equals(Chaine2);
@@ -196,13 +204,10 @@ public class Main {
 
     public static void carres() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Nombre de x au carre souhaite : ");
+        System.out.println("valeur de x : ");
 
-        int carre = scanner.nextInt();
-        for (int i = 1; i<= carre; i++) {
-
-            System.out.println("x = " +i + "	 x^2 = " + i*i);
-        }
+        int x = scanner.nextInt();
+        System.out.println("x = " + x + "\tx^2 = " + x*x);
     }//end carres
 
 
@@ -213,75 +218,67 @@ public class Main {
             System.out.print("\n");
             for (int j=1; j<=10; j++) {
                 System.out.print(i*j+"\t");
+                // avec "printf" (affichage formaté) : System.out.printf("%3d\t", i*j);
             }
-
         }
 
     }//end tableMultiplication
 
     public static void division() {
         Scanner scanner = new Scanner(System.in);
-        float entier1;
-        float entier2;
+        int entier1;
+        int entier2;
         do {
             System.out.print("Veuillez saisir un entier (numerateur) : ");
-            entier1=scanner.nextFloat();
+            entier1=scanner.nextInt();
             System.out.print("Veuillez saisir un second entier (denominateur) : ");
-            entier2=scanner.nextFloat();
+            entier2=scanner.nextInt();
         } while (entier2 == 0);
-        float division = entier1/entier2;
+        int division = entier1/entier2;
         System.out.println("La division de "+entier1+" par "+entier2+" vaut "+division);
     }//end division
 
     public static void regle() {
         Scanner scanner = new Scanner(System.in);
-        int entier1;
+        int entier;
 
         do {
             System.out.print("Saisir un entier strictement positif : ");
-            entier1=scanner.nextInt();
-        }while (entier1 <=0);
+            entier=scanner.nextInt();
+        }while (entier <=0);
 
-        for(int i=1; i<=entier1;i++) {
-            System.out.print("|---------");
+        for(int i=0; i<=entier; i++) {
+            if (i % 10 == 0) {
+                System.out.print("|");
+            } else {
+                System.out.print("-");
+            }
         }
-        System.out.print("|");
     }//end regle
 
     public static void nombrePremier() {
 
         Scanner scanner = new Scanner(System.in);
-        int nombre1;
+        int nombre;
 
         do {
             System.out.print("Choisir un nombre : ");
-            nombre1=scanner.nextInt();
+            nombre=scanner.nextInt();
 
-        }while (nombre1<=0);
+        }while (nombre<=0);
 
-        if (nombre1 == 0) {
-            System.out.println(nombre1 + " n'est pas un nombre premier");
-        }
-        else if (nombre1 == 1) {
-            System.out.println(nombre1 + " n'est pas un nombre premier");
-        }
-        else if (nombre1 == 2) {
-            System.out.println(nombre1 + " est un nombre premier");
-        }
+        if (nombre <= 2) {
+            System.out.println(nombre + " est un nombre premier");
+        } else {
+            for (int i = 2; i < nombre; i++) {
 
-        for (int i =2; i<nombre1;) {
+                if (nombre % i == 0) {
 
-            if ( nombre1 % i == 0) {
-
-                System.out.println(nombre1+ " n'est pas un nombre premier");
-                break;
+                    System.out.println(nombre + " n'est pas un nombre premier");
+                    return;
+                }
             }
-
-            else {
-
-                System.out.println(nombre1 + " est un nombre premier");
-                break;
-            }
+            System.out.println(nombre + " est un nombre premier");
         }
 
     }//end nombrePremier
@@ -291,7 +288,7 @@ public class Main {
         int[] tableau = new int[20];
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < tableau.length; i++) {
-            System.out.println("Saisir un entier : ");
+            System.out.print("[" + i + "] Saisir un entier : ");
             int entier = scanner.nextInt();
             tableau[i] = entier;
         }
@@ -300,15 +297,10 @@ public class Main {
 
         int max = 0;
 
-        for ( int i = 0 ; i < tableau.length ; i++) { // Boucle pour trouver le maximum du tableau
+        // Boucle pour trouver le maximum du tableau
+        for ( int i = 0 ; i < tableau.length ; i++) {
 
-            if (max > tableau[i]) {
-
-                max = max;
-
-            }
-
-            else if (max < tableau[i]) {
+            if (max < tableau[i]) {
 
                 max = tableau[i];
             }
@@ -317,17 +309,13 @@ public class Main {
 
         int min = tableau [0];
 
-        for ( int i = 0 ; i < tableau.length ; i++) { // Boucle pour trouver le maximum du tableau
+        // Boucle pour trouver le minimum du tableau
+        for ( int i = 0 ; i < tableau.length ; i++) {
 
             if (min > tableau[i]) {
 
                 min = tableau [i];
 
-            }
-
-            else if (min < tableau[i]) {
-
-                min = min;
             }
         }
         System.out.println("Le minimum du tableau est "+min+"\n");
@@ -339,12 +327,12 @@ public class Main {
         }
         System.out.println("La somme des elements du tableau est "+somme+"\n");
 
-        System.out.println("Liste des elements pairs du tableau :\n");
+        System.out.println("Liste des elements pairs du tableau :");
 
         for (int i=0; i<tableau.length; i++) {
             if (tableau [i]%2==0) {
 
-                System.out.println("L'element "+tableau[i]+" est pair");
+                System.out.print(tableau[i]+" ");
 
             }
         }
@@ -354,5 +342,16 @@ public class Main {
         for (int i = 0 ; i < tableau.length ; i= i+2) {
             System.out.println("L'element d'indice pair " + i + " vaut " + tableau[i]);
         }
+
+        inverseTableau(tableau);
+        System.out.println("\nLe tableau inverse : " +java.util.Arrays.toString(tableau) + "\n");
     }//end initialisationTableau
+
+    public static void inverseTableau(int[] tab) {
+        for (int i=0; i < tab.length / 2; i++) {
+            int swap = tab[i];
+            tab[i] = tab[ tab.length - i - 1 ];
+            tab[ tab.length - i - 1 ] = swap;
+        }
+    }
 }//public class
